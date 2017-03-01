@@ -5,7 +5,13 @@ class Reviews extends Component {
   render(){
     return(
       <ul>
-        Reviews
+        {this.props.store.getState().reviews.map((review, index) => {
+          return <Review key={index}
+                  text={review.text}
+                  id={review.id}
+                  restaurantId={review.restaurantId}
+                  />
+        })}
       </ul>
     )
   }
