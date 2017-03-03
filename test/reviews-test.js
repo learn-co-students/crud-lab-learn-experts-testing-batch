@@ -139,7 +139,7 @@ describe('Reviews Component', () => {
     expect(new Set(ids).size === ids.length).to.equal(true)
   });
 
-  it('has a button that dispatches an DELETE_RESTAURANT action with the proper id when clicked', ()=> {
+  it('has a button that dispatches an DELETE_REVIEW action with the proper id when clicked', ()=> {
     const store = createStore(manageRestaurant)
     const wrapper = shallow(<Review store={store} id={1} text={'hello'}/>)
     let deleteButton = wrapper.find('button').first()
@@ -158,7 +158,7 @@ describe('Reviews Component', () => {
     form.simulate('submit',  { preventDefault() {} })
     input.simulate('change', { target: { value: 'ciao' } })
     form.simulate('submit',  { preventDefault() {} })
-    
+
     let secondReview = store.getState().reviews[1]
     const ReviewComponent = shallow(<Review store={store} id={secondReview.id} text={secondReview.text}/>)
     let deleteButton = ReviewComponent.find('button').first()

@@ -18,6 +18,14 @@ export default function manageRestaurants(state={restaurants: [], reviews: []}, 
       var reviews = [...state.reviews];
       reviews.push({text: action.text, id: cuidFn(), restaurantId: action.restaurantId});
       return Object.assign({}, state, {reviews: reviews});
+    case 'DELETE_REVIEW':
+      var reviews = [...state.reviews];
+      for (var i = 0; i < reviews.length; i++) {
+        if(reviews[i].id == action.id){
+          reviews.splice(i, 1);
+        }
+      }
+      return Object.assign({}, state, {reviews: reviews});
     default:
       return state;
   }

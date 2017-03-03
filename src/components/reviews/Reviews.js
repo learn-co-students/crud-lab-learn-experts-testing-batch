@@ -6,11 +6,14 @@ class Reviews extends Component {
     return(
       <ul>
         {this.props.store.getState().reviews.map((review, index) => {
-          return <Review key={index}
-                  text={review.text}
-                  id={review.id}
-                  restaurantId={review.restaurantId}
-                  />
+          if(this.props.restaurantId == review.restaurantId){
+            return <Review key={index}
+                    text={review.text}
+                    id={review.id}
+                    restaurantId={review.restaurantId}
+                    store={this.props.store}
+                    />
+          }
         })}
       </ul>
     )
